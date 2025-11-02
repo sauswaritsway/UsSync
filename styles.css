@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #FFB6B9 0%, #FFC8C0 50%, #FFD6D0 100%);
+    min-height: 100vh;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 30px 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.mode-item {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #FFE0E0;
+}
+
+.mode-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.mode-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.mode-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FF6B6B;
+    flex: 1;
+}
+
+.notify-btn {
+    background: #FF6B6B;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.notify-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 10px rgba(255, 107, 107, 0.4);
+}
+
+.notify-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+}
+
+.switch-container {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: #E0E0E0;
+    border-radius: 22.5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    overflow: hidden;
+}
+
+.switch-container.active {
+    background: #FFB6B9;
+}
+
+.switch-slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 35px;
+    height: 35px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.switch-container.active .switch-slider {
+    transform: translateX(calc(100% - 45px + 100%));
+}
+
+.switch-label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.switch-label.off {
+    left: 55px;
+    color: #999;
+}
+
+.switch-label.on {
+    right: 55px;
+    color: white;
+    opacity: 0;
+}
+
+.switch-container.active .switch-label.off {
+    opacity: 0;
+}
+
+.switch-container.active .switch-label.on {
+    opacity: 1;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Mode Sync</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="mode-item">
+            <div class="mode-header">
+                <div class="mode-title">Best Friends</div>
+                <button class="notify-btn" data-mode="best-friends">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="switch-container" data-mode="best-friends">
+                <div class="switch-slider"></div>
+                <div class="switch-label off">OFF</div>
+                <div class="switch-label on">ON</div>
+            </div>
+        </div>
+
+        <div class="mode-item">
+            <div class="mode-header">
+                <div class="mode-title">Baby Mode</div>
+                <button class="notify-btn" data-mode="baby-mode">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="switch-container" data-mode="baby-mode">
+                <div class="switch-slider"></div>
+                <div class="switch-label off">OFF</div>
+                <div class="switch-label on">ON</div>
+            </div>
+        </div>
+
+        <div class="mode-item">
+            <div class="mode-header">
+                <div class="mode-title">Real Selves</div>
+                <button class="notify-btn" data-mode="real-selves">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="switch-container" data-mode="real-selves">
+                <div class="switch-slider"></div>
+                <div class="switch-label off">OFF</div>
+                <div class="switch-label on">ON</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
