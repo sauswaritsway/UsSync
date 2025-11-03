@@ -1,17 +1,19 @@
 {
   "name": "UsSync",
   "short_name": "UsSync",
+  "start_url": "/UsSync/",
+  "scope": "/UsSync/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "icon-550.png",
+      "src": "/UsSync/icon-550.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-550.png",
+      "src": "/UsSync/icon-550.png",
       "sizes": "512x512",
       "type": "image/png"
     }

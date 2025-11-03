@@ -94,5 +94,10 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/repo-name/service-worker.js");
+    }
+    </script>
 </body>
 </html>

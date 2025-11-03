@@ -270,10 +270,6 @@ function startPolling() {
     }, 2000); // Poll every 2 seconds
 }
 
-//Service worker
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/service-worker.js");
-}
 // Start the app when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
