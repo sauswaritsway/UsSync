@@ -1,7 +1,7 @@
 {
   "name": "UsSync",
   "short_name": "UsSync",
-  "start_url": "./UsSync/",
+  "start_url": "./",
   "scope": "./UsSync/",
   "display": "standalone",
   "background_color": "#ffffff",
