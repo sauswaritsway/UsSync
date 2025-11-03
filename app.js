@@ -65,7 +65,7 @@ async function registerPush() {
         return;
     }
 
-    const reg = await navigator.serviceWorker.register('/service-worker.js');
+    const reg = await navigator.serviceWorker.register('/UsSync/service-worker.js');
     console.log("Service worker registered", reg);
 
     // Subscribe
