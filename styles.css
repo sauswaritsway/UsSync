@@ -145,7 +145,7 @@ body {
 }
 
 @media (max-height: 750px) {
-    :root { --container-scale: 0.90; }
+    :root { --container-scale: 0.80; }
 }
 
 @media (max-height: 680px) {
