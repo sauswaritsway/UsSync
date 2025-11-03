@@ -1,6 +1,7 @@
 // Configuration
 const API_URL =   'https://mode-sync-worker.sauswaritsway.workers.dev'; // Change to your Cloudflare Worker URL when deployed
 
+const PUBLIC_VAPID_KEY = "BA3RSfNcm-T3xcW7HFMx7VfsxWzVDB-wCQJBlufCSLKp30ORV4giZ0yPu_cRwqos5_WF9DjuHzl4P7T7Vs3rgM8";
 // Detect device type
 const isIPhone = /iPhone/i.test(navigator.userAgent);
 const userName = isIPhone ? 'Sau' : 'Swarit';
@@ -17,8 +18,15 @@ let states = {
 let lastNotificationId = null;
 let notificationPermissionGranted = false;
 
+function urlBase64ToUint8Array(base64) {
+    const padding = '='.repeat((4 - base64.length % 4) % 4);
+    const base64Safe = (base64 + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const raw = atob(base64Safe);
+    return Uint8Array.from([...raw].map(ch => ch.charCodeAt(0)));
+}
 // Initialize app
 async function init() {
+
     // Fetch states before showing UI
     await fetchStates();
     
@@ -30,6 +38,11 @@ async function init() {
     
     // Check if notifications are supported
     checkNotificationSupport();
+
+
+    if (notificationPermissionGranted) {
+        registerPush();
+    }
 }
 
 // Check notification support and request permission on first interaction
@@ -46,6 +59,30 @@ function checkNotificationSupport() {
     }
 }
 
+async function registerPush() {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+        console.log("Push not supported");
+        return;
+    }
+
+    const reg = await navigator.serviceWorker.register('/service-worker.js');
+    console.log("Service worker registered", reg);
+
+    // Subscribe
+    const sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
+    });
+
+    // Send subscription to backend
+    await fetch(`${API_URL}/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sub)
+    });
+
+    console.log("Subscribed to push");
+}
 // Request notification permission (must be triggered by user interaction)
 async function requestNotificationPermission() {
     if (!('Notification' in window)) {
@@ -67,10 +104,11 @@ async function requestNotificationPermission() {
     try {
         const permission = await Notification.requestPermission();
         console.log('Permission result:', permission);
-        
+
         if (permission === 'granted') {
             notificationPermissionGranted = true;
-            // Show a test notification
+            await registerPush();     // <-- ADD THIS
+
             const reg = await navigator.serviceWorker.getRegistration();
             reg?.showNotification('Notifications Enabled!', {
                 body: 'You will now receive mode requests',
