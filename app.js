@@ -288,10 +288,6 @@ function showNotification(notification) {
                 }
             });
 
-            n.onclick = function() {
-                window.focus();
-                n.close();
-            };
             
             console.log('Notification created successfully');
         } catch (error) {
