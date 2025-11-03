@@ -9,7 +9,9 @@ const userName = isIPhone ? 'Sau' : 'Swarit';
 let states = {
     'best-friends': false,
     'baby-mode': false,
-    'real-selves': false
+    'real-selves': false,
+    'lovers': false,
+    'benefits': false
 };
 
 let lastNotificationId = null;
@@ -171,7 +173,9 @@ async function sendNotification(mode) {
     const modeNames = {
         'best-friends': 'Best Friends',
         'baby-mode': 'Baby Mode',
-        'real-selves': 'Real Selves'
+        'real-selves': 'Real Selves',
+        'lovers': 'Lovers',
+        'benefits': 'Benefits'
     };
 
     try {
