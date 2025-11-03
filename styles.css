@@ -144,8 +144,8 @@ body {
     transform-origin: center top;
 }
 
-@media (max-height: 750px) {
-    :root { --container-scale: 0.80; }
+@media (max-height: 1000px) {
+    :root { --container-scale: 0.90; }
 }
 
 @media (max-height: 680px) {
