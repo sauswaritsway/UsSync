@@ -278,10 +278,13 @@ function showNotification(notification) {
         try {
             navigator.serviceWorker.getRegistration().then(reg => {
                 if (reg) {
-                    reg.showNotification('Mode Request', {
+                    reg.showNotification("Mode Request", {
                         body: notification.message,
                         tag: notification.mode,
-                        requireInteraction: false
+                        requireInteraction: false,
+                        renotify: true,
+                        android_channel_id: "high-priority",
+                        priority: "high"
                     });
                 } else {
                     alert(notification.message);

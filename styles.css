@@ -145,17 +145,17 @@ body {
 }
 
 @media (max-height: 750px) {
-    :root { --container-scale: 0.95; }
-}
-
-@media (max-height: 680px) {
     :root { --container-scale: 0.90; }
 }
 
-@media (max-height: 620px) {
+@media (max-height: 680px) {
     :root { --container-scale: 0.85; }
 }
 
-@media (max-height: 560px) {
+@media (max-height: 620px) {
     :root { --container-scale: 0.80; }
+}
+
+@media (max-height: 560px) {
+    :root { --container-scale: 0.75; }
 }
