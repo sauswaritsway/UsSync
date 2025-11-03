@@ -71,7 +71,8 @@ async function requestNotificationPermission() {
         if (permission === 'granted') {
             notificationPermissionGranted = true;
             // Show a test notification
-            new Notification('Notifications Enabled!', {
+            const reg = await navigator.serviceWorker.getRegistration();
+            reg?.showNotification('Notifications Enabled!', {
                 body: 'You will now receive mode requests',
                 tag: 'permission-granted'
             });
@@ -237,13 +238,18 @@ function showNotification(notification) {
 
     if (Notification.permission === 'granted') {
         try {
-            const n = new Notification('Mode Request', {
-                body: notification.message,
-                tag: notification.mode,
-                requireInteraction: false,
-                silent: false
+            navigator.serviceWorker.getRegistration().then(reg => {
+                if (reg) {
+                    reg.showNotification('Mode Request', {
+                        body: notification.message,
+                        tag: notification.mode,
+                        requireInteraction: false
+                    });
+                } else {
+                    alert(notification.message);
+                }
             });
-            
+
             n.onclick = function() {
                 window.focus();
                 n.close();
